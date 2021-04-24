@@ -19,6 +19,7 @@ public class FistulaEntry : MonoBehaviour
         if (vessel != null)
         {
             vessel.InFistula = vessel.transform.position.y < transform.position.y;
+            vessel.scoreDecentStart = Time.timeSinceLevelLoad;
         }
 
     }

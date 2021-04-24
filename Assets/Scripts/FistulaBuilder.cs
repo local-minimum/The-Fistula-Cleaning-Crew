@@ -8,7 +8,7 @@ public class FistulaBuilder : MonoBehaviour
     [SerializeField] FistulaSegment firstSegment;
     [SerializeField] List<FistulaSegment> segments;
     [SerializeField] int segmentsDeep = 20;
-    
+    [SerializeField] Transform bottom;
     Dictionary<BuilderInstruction, List<BuilderInstruction>> linkOptions = new Dictionary<BuilderInstruction, List<BuilderInstruction>>();
 
     void Start()
@@ -80,6 +80,7 @@ public class FistulaBuilder : MonoBehaviour
             seg = SpawnSegment(instruction.segment, seg.Bottom, instruction.flipped);
             seg.SpawnDirt(1);            
         }
+        bottom.transform.position = seg.Bottom;
     }
 
     BuilderInstruction getRndInstruction(BuilderInstruction previous)

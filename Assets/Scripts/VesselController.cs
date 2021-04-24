@@ -20,7 +20,11 @@ public class VesselController : MonoBehaviour
         get;
         set;
     }
-
+    public float scoreDecentStart
+    {
+        get;
+        set;
+    }
 
     //TODO: Add easing to clamps
     //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
