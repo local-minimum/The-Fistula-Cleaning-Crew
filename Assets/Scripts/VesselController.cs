@@ -83,8 +83,7 @@ public class VesselController : MonoBehaviour
         if ((targetVelocity < 0 && velocity > targetVelocity) || (targetVelocity > 0 && velocity < targetVelocity))
         {
             rb.AddTorque(stabilizingForce * Time.deltaTime);
-        }
-        //Debug.Log(string.Format("{0} {1} {2}", velocity, rotation, targetVelocity));
+        }        
     }
 
     void ClampVelocities()

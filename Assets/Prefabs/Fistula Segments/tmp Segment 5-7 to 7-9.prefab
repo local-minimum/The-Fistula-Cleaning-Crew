@@ -1279,6 +1279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentHeight: 8
+  upEdge: 5-7
+  downEdge: 7-9
+  segmentId: F
 --- !u!1 &3534233659544519588
 GameObject:
   m_ObjectHideFlags: 0

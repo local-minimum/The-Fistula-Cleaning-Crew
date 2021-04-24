@@ -740,6 +740,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstSegment: {fileID: -228348297928465296, guid: 12045b861d1089a499bf42f058402cfc, type: 3}
+  segments:
+  - {fileID: 6766987667375732529, guid: 7974fb5d78f080a4699655a940921d28, type: 3}
+  - {fileID: -7714535271997826354, guid: d3f944021eb9db448a5952f6f8877fe2, type: 3}
+  - {fileID: -8306436622722864871, guid: ac14887b5cd34004da127ce2ba6d3cf9, type: 3}
+  - {fileID: 955025533340575618, guid: fd94759c21510b74983aa429b28f266d, type: 3}
+  - {fileID: -228348297928465296, guid: 12045b861d1089a499bf42f058402cfc, type: 3}
+  - {fileID: 8714368555296750162, guid: 985f747ae0f1e79438f8377883424978, type: 3}
+  segmentsDeep: 20
 --- !u!1 &2380080032534532723
 GameObject:
   m_ObjectHideFlags: 0

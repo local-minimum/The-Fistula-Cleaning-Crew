@@ -5,22 +5,38 @@ using UnityEngine;
 public class FistulaSegment : MonoBehaviour
 {
     [SerializeField] int segmentHeight = 8;
+    [SerializeField] string upEdge;
+    [SerializeField] string downEdge;
+    [SerializeField] string segmentId;
+
+    public string SegmentID
+    {
+        get
+        {
+            return segmentId;
+        }
+    }
+
+    public string Up
+    {
+        get
+        {
+            return upEdge;
+        }
+    }
+
+    public string Down
+    {
+        get
+        {
+            return downEdge;
+        }
+    }
 
     public Vector3 Bottom {
         get
         {
             return transform.position + Vector3.down * segmentHeight * 0.5f;
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = Bottom;        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
