@@ -13,9 +13,7 @@ public class VesselController : MonoBehaviour
 
     [SerializeField] float maxTroque = 40f;
     [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
-
-    bool inFistula = false;
-
+    
     //TODO: Add easing to clamps
     //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
 
@@ -74,10 +72,8 @@ public class VesselController : MonoBehaviour
 
     public bool InFistula
     {
-        get
-        {
-            return inFistula;
-        }
+        get;
+        set;
     }
 
     void StabilizeVessel()

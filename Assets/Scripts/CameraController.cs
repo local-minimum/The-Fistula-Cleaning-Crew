@@ -7,9 +7,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     AnimationCurve vesselVerticalTarget;
     [SerializeField] float offsetAmplitude = 3f;
-
-    [SerializeField, Range(0, 1)]
-    float targetEasing = 0.5f;
+    
+    [SerializeField, Range(0, 5)]
+    float targetEasing = 2f;
 
     [SerializeField] float surfaceMinY = 0;
     [SerializeField] float viewDistance = -10f;
@@ -35,6 +35,6 @@ public class CameraController : MonoBehaviour
             viewDistance
         );
 
-        transform.position = Vector3.Lerp(transform.position, pos, targetEasing);
+        transform.position = Vector3.Lerp(transform.position, pos, targetEasing * Time.deltaTime);
     }
 }
