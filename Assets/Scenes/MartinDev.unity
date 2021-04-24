@@ -389,14 +389,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19931700fe166b4b97bb5576d12258e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stabilizingForce: 100
+  stabilizingForce: 30
   stabilizingSpeedScale: 30
   stabilizingSpeedModulation:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.2000122
       inSlope: 0.008308223
       outSlope: 0.008308223
       tangentMode: 0
@@ -404,13 +404,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.10430129
     - serializedVersion: 3
-      time: 46.915283
-      value: 0.49465963
-      inSlope: 0.0136409765
-      outSlope: 0.0136409765
+      time: 38.50259
+      value: 0.5189694
+      inSlope: 0.007244143
+      outSlope: 0.007244143
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.08116309
+      inWeight: 0.1546896
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 180
@@ -424,6 +424,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  torqueForce: -50
+  liftForce: 700
 --- !u!1 &1397436811
 GameObject:
   m_ObjectHideFlags: 0

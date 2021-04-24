@@ -8,6 +8,9 @@ public class VesselController : MonoBehaviour
     [SerializeField] float stabilizingSpeedScale = 10f;
     [SerializeField] AnimationCurve stabilizingSpeedModulation;
 
+    [SerializeField] float torqueForce = 1f;
+    [SerializeField] float liftForce = 1f;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,25 @@ public class VesselController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StabilizeVessel();    
+        bool stabilize = true;
+        if (Input.GetButton("Horizontal"))
+        {
+            float torque = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * torqueForce;
+            rb.AddTorque(torque, ForceMode2D.Force);
+            stabilize = false;
+            Debug.Log(string.Format("Rotate {0}", torque));
+        }
+        if (Input.GetButton("Vertical"))
+        {
+            rb.AddForce(transform.up * liftForce * Time.deltaTime, ForceMode2D.Force);
+            stabilize = false;
+            Debug.Log("Fly");
+        }
+        
+        if (stabilize) {
+            StabilizeVessel();
+        }
+        
     }
 
     float rotation
@@ -44,6 +65,6 @@ public class VesselController : MonoBehaviour
         {
             rb.AddTorque(stabilizingForce * Time.deltaTime);
         }
-        Debug.Log(string.Format("{0} {1} {2}", velocity, rotation, targetVelocity));
+        //Debug.Log(string.Format("{0} {1} {2}", velocity, rotation, targetVelocity));
     }
 }
