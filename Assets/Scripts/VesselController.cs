@@ -11,6 +11,14 @@ public class VesselController : MonoBehaviour
     [SerializeField] float torqueForce = 1f;
     [SerializeField] float liftForce = 1f;
 
+    [SerializeField] float maxTroque = 40f;
+    [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
+
+    bool inFistula = false;
+
+    //TODO: Add easing to clamps
+    //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -27,19 +35,18 @@ public class VesselController : MonoBehaviour
             float torque = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * torqueForce;
             rb.AddTorque(torque, ForceMode2D.Force);
             stabilize = false;
-            Debug.Log(string.Format("Rotate {0}", torque));
         }
         if (Input.GetButton("Vertical"))
         {
             rb.AddForce(transform.up * liftForce * Time.deltaTime, ForceMode2D.Force);
             stabilize = false;
-            Debug.Log("Fly");
         }
         
         if (stabilize) {
             StabilizeVessel();
         }
-        
+
+        ClampVelocities();
     }
 
     float rotation
@@ -57,6 +64,22 @@ public class VesselController : MonoBehaviour
         }
     }
 
+    public float fallVelocity
+    {
+        get
+        {
+            return rb.velocity.y;
+        }
+    }
+
+    public bool InFistula
+    {
+        get
+        {
+            return inFistula;
+        }
+    }
+
     void StabilizeVessel()
     {
         float velocity = rb.angularVelocity;
@@ -66,5 +89,21 @@ public class VesselController : MonoBehaviour
             rb.AddTorque(stabilizingForce * Time.deltaTime);
         }
         //Debug.Log(string.Format("{0} {1} {2}", velocity, rotation, targetVelocity));
+    }
+
+    void ClampVelocities()
+    {
+        
+        rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxTroque, maxTroque);        
+        var vel = rb.velocity;
+        if (Mathf.Abs(vel.x) > maxVelocity.x)
+        {
+            vel.x = maxVelocity.x * Mathf.Sign(vel.x);
+        }
+        if (Mathf.Abs(vel.y) > maxVelocity.y)
+        {
+            vel.y = maxVelocity.y * Mathf.Sign(vel.y);
+        }
+        rb.velocity = vel;
     }
 }
