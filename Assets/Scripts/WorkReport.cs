@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WorkReport : MonoBehaviour
 {
@@ -43,7 +44,12 @@ public class WorkReport : MonoBehaviour
 
     void Start()
     {
-        if (FindObjectOfType<CameraController>() == null)
+        var vessel = FindObjectOfType<VesselController>();
+        var builder = FindObjectOfType<FistulaBuilder>();
+        if (vessel != null && builder != null)
+        {
+            SetScore(vessel.scoreKeeper.Summarize(), builder.nSegments);
+        } else
         {
             UpdateHeaders();
             StartCoroutine(MakeReport());
@@ -66,12 +72,18 @@ public class WorkReport : MonoBehaviour
         cleaningsHeader.text = string.Format("Gunk Removed (x{0})", cleaningsScore);
     }
 
+    bool running = false;
+
     [SerializeField] float countingDelay = 0.1f;
     [SerializeField] float betweenCountingDelay = 0.75f;
     [SerializeField] float initialDelay = 1f;
     IEnumerator<WaitForSeconds> MakeReport()
     {
-        
+        if (running)
+        {
+            yield break;
+        }
+        running = true;
         yield return new WaitForSeconds(1f);
 
         List<int> totals = new List<int>();
@@ -127,5 +139,10 @@ public class WorkReport : MonoBehaviour
             record.enabled = true;
             PlayerPrefs.SetInt("bestScore", total);
         }
+    }
+
+    public void OnClickAgain()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

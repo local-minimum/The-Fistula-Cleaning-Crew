@@ -11,6 +11,14 @@ public class FistulaBuilder : MonoBehaviour
     [SerializeField] Transform bottom;
     Dictionary<BuilderInstruction, List<BuilderInstruction>> linkOptions = new Dictionary<BuilderInstruction, List<BuilderInstruction>>();
 
+    public int nSegments
+    {
+        get
+        {
+            return segmentsDeep;
+        }
+    }
+
     void Start()
     {
         CreateLinkOptions();
@@ -104,10 +112,5 @@ public class FistulaBuilder : MonoBehaviour
             seg.transform.localScale = new Vector3(1, -1, 1);
         }
         return seg;
-    }
-
-    void Update()
-    {
-        
     }
 }

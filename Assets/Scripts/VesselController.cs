@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VesselController : MonoBehaviour
 {
@@ -144,7 +145,7 @@ public class VesselController : MonoBehaviour
             playerHasControl = false;
             var score = scoreKeeper.Summarize();
             Debug.Log(score.ToString());
-            //TODO: Present score
+            SceneManager.LoadScene("WorkReport", LoadSceneMode.Additive);
         }
     }
 }
