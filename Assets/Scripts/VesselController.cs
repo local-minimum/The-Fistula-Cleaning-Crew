@@ -13,7 +13,15 @@ public class VesselController : MonoBehaviour
 
     [SerializeField] float maxTroque = 40f;
     [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
-    
+
+    int scoreCollisions = 0;
+    public int scoreCleanings
+    {
+        get;
+        set;
+    }
+
+
     //TODO: Add easing to clamps
     //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
 
@@ -100,5 +108,18 @@ public class VesselController : MonoBehaviour
             vel.y = maxVelocity.y * Mathf.Sign(vel.y);
         }
         rb.velocity = vel;
+    }
+
+    private float lastGroundCollision = 0f;
+    [SerializeField, Range(0, 1)] float groundCollisionGracePeriod = 0.25f;
+    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground" && Time.timeSinceLevelLoad - lastGroundCollision > groundCollisionGracePeriod)
+        {
+            scoreCollisions += 1;
+            lastGroundCollision = Time.timeSinceLevelLoad;
+        }
     }
 }

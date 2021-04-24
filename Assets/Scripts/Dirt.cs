@@ -59,6 +59,8 @@ public class Dirt : MonoBehaviour
 
     private void Cleaned()
     {
+        var vessel = FindObjectOfType<VesselController>();
+        vessel.scoreCleanings += 1;
         //TODO: Fancy splosh
         Destroy(gameObject);
     }
