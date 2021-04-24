@@ -78,6 +78,7 @@ public class FistulaBuilder : MonoBehaviour
         {
             instruction = getRndInstruction(instruction);
             seg = SpawnSegment(instruction.segment, seg.Bottom, instruction.flipped);
+            seg.SpawnDirt(1);            
         }
     }
 

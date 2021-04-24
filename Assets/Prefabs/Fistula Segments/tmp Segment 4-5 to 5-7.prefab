@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2319975335864229864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2291192130957016203}
+  m_Layer: 0
+  m_Name: stationaryDirt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2291192130957016203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319975335864229864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.29, y: -2.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7530739372483543292}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7338800793049904251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1741,7 @@ Transform:
   - {fileID: 7530739372741877848}
   - {fileID: 7530739371382086760}
   - {fileID: 2889104045623930815}
+  - {fileID: 2291192130957016203}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1730,6 +1761,8 @@ MonoBehaviour:
   upEdge: 4-5
   downEdge: 5-7
   segmentId: E
+  stationaryDirtSpawns:
+  - {fileID: 2291192130957016203}
 --- !u!1 &7530739372576565173
 GameObject:
   m_ObjectHideFlags: 0
