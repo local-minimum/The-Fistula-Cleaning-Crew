@@ -28,7 +28,18 @@ public class Dirt : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (!cleaning)
+        {
+            SoundBoard.Play(SoundType.TargetGunk);
+            StartCoroutine(PlayCleaning());
+        }
         cleaningTarget = this;
+    }
+
+    IEnumerator<WaitForSeconds> PlayCleaning()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SoundBoard.Play(SoundType.CleaningGunk);
     }
 
     private void Update()
@@ -41,6 +52,7 @@ public class Dirt : MonoBehaviour
             {
                 cleaned = true;
                 Cleaned();
+                SoundBoard.Play(SoundType.ExplodingGunk);
             }
         } else
         {

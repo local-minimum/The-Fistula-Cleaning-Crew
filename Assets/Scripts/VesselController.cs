@@ -132,6 +132,7 @@ public class VesselController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            SoundBoard.Play(SoundType.BouncingGround);
             scoreKeeper.GroundCollision();
         }
     }
