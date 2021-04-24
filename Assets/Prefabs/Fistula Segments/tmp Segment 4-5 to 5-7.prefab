@@ -1701,7 +1701,7 @@ GameObject:
   - component: {fileID: -228348297928465296}
   m_Layer: 0
   m_Name: tmp Segment 4-5 to 5-7
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

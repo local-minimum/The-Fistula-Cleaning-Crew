@@ -7,10 +7,10 @@ public class ScoreKeeper : MonoBehaviour
     #region CollisionCounting
     int collisions = 0;
     private float lastCollisionScore = 0f;
+
     [SerializeField, Range(0, 1)] float collisionGracePeriod = 0.25f;    
     public void GroundCollision()
     {
-        Debug.Log("Collisiong with ground");
         if (Time.timeSinceLevelLoad - lastCollisionScore > collisionGracePeriod)
         {
             collisions += 1;
@@ -35,14 +35,24 @@ public class ScoreKeeper : MonoBehaviour
         descentStart = Time.timeSinceLevelLoad;
     }
 
+    #region landing 
+    bool landedStanding = false;
+    [SerializeField] float landingAngleTolerange = 10f;
+    public void LandingVector(Vector3 vesselUp)
+    {
+        landedStanding = Mathf.Abs(Vector3.Angle(Vector3.up, vesselUp)) < landingAngleTolerange;
+    }
+
+    #endregion
     public void EndDescent()
     {
         descentEnd = Time.timeSinceLevelLoad;
     }
     #endregion
 
+
     public ScoreSummary Summarize()
     {
-        return new ScoreSummary(collisions, cleanings, descentEnd - descentStart);
+        return new ScoreSummary(collisions, cleanings, descentEnd - descentStart, landedStanding);
     }
 }

@@ -132,9 +132,15 @@ public class VesselController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             scoreKeeper.GroundCollision();
-        } else if (collision.gameObject.tag == "Bottom" && landingVelocity)
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (playerHasControl && collision.gameObject.tag == "Bottom" && landingVelocity)
         {
             scoreKeeper.EndDescent();
+            scoreKeeper.LandingVector(transform.up);
             playerHasControl = false;
             var score = scoreKeeper.Summarize();
             Debug.Log(score.ToString());
