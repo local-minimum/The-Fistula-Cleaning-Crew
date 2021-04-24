@@ -3054,7 +3054,7 @@ MonoBehaviour:
   - {fileID: 955025533340575618, guid: fd94759c21510b74983aa429b28f266d, type: 3}
   - {fileID: -228348297928465296, guid: 12045b861d1089a499bf42f058402cfc, type: 3}
   - {fileID: 8714368555296750162, guid: 985f747ae0f1e79438f8377883424978, type: 3}
-  segmentsDeep: 20
+  segmentsDeep: 6
   bottom: {fileID: 4430700052468042717}
 --- !u!1 &2254191538804639833
 GameObject:
