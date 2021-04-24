@@ -883,8 +883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb073131965f4f4fa3b4bd8292a3695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCollisionsPerSegment: 5
-  maxFlightPerSegment: 7.5
+  maxCollisionsPerSegment: 4
+  maxFlightPerSegment: 8
   collisionsHeader: {fileID: 938229881}
   flightHeader: {fileID: 304148984}
   landingHeader: {fileID: 2066645239}

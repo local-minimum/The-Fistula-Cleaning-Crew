@@ -38,8 +38,11 @@ public class Dirt : MonoBehaviour
 
     IEnumerator<WaitForSeconds> PlayCleaning()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
+        Laser.Target(transform);
+        yield return new WaitForSeconds(0.1f);
         SoundBoard.Play(SoundType.CleaningGunk);
+        
     }
 
     private void Update()
@@ -65,11 +68,13 @@ public class Dirt : MonoBehaviour
         if (cleaning)
         {
             cleaningTarget = null;
+            Laser.ClearTarget();
         }
     }
 
     private void Cleaned()
     {
+        Laser.ClearTarget();
         var vessel = FindObjectOfType<VesselController>();
         vessel.scoreKeeper.AddCleaning();        
         Destroy(gameObject);

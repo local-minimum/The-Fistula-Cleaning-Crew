@@ -258,11 +258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.93
+      value: -6.17
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.77
+      value: -1.93
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -270,19 +270,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.19334908
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98113006
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_RootOrder
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 655084030808900472, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -22.297
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79e4bd226d71f7545b6c6c358868754c, type: 3}
@@ -316,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 712102830, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_text
       value: Hover gunk with your mouse for the laser to start blasting it away.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326535278, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2026432092, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_Camera

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class WorkReport : MonoBehaviour
 {
+    string scoreKey = "bestScore";
+
     [SerializeField] float maxCollisionsPerSegment = 5f;
     [SerializeField] float maxFlightPerSegment = 6f;
 
@@ -134,10 +136,10 @@ public class WorkReport : MonoBehaviour
             yield return new WaitForSeconds(countingDelay);
         }
 
-        if (PlayerPrefs.GetInt("bestScore", -1) < total)
+        if (PlayerPrefs.GetInt(scoreKey, -1) < total)
         {
             record.enabled = true;
-            PlayerPrefs.SetInt("bestScore", total);
+            PlayerPrefs.SetInt(scoreKey, total);
         }
     }
 
@@ -145,4 +147,13 @@ public class WorkReport : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            PlayerPrefs.DeleteKey(scoreKey);
+        }
+    }
 }
+
