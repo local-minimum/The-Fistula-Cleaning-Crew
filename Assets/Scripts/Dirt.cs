@@ -29,7 +29,6 @@ public class Dirt : MonoBehaviour
     private void OnMouseEnter()
     {
         cleaningTarget = this;
-        Debug.Log(string.Format("cleaning: {0}", name));
     }
 
     private void Update()
@@ -60,8 +59,7 @@ public class Dirt : MonoBehaviour
     private void Cleaned()
     {
         var vessel = FindObjectOfType<VesselController>();
-        vessel.scoreCleanings += 1;
-        //TODO: Fancy splosh
+        vessel.scoreKeeper.AddCleaning();        
         Destroy(gameObject);
     }
 

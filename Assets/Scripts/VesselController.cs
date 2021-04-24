@@ -14,17 +14,13 @@ public class VesselController : MonoBehaviour
     [SerializeField] float maxTroque = 40f;
     [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
 
-    int scoreCollisions = 0;
-    public int scoreCleanings
-    {
+    bool playerHasControl = true;
+
+    public ScoreKeeper scoreKeeper {
+        private set;
         get;
-        set;
     }
-    public float scoreDecentStart
-    {
-        get;
-        set;
-    }
+ 
 
     //TODO: Add easing to clamps
     //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
@@ -34,19 +30,24 @@ public class VesselController : MonoBehaviour
     void Start()
     {
         rb = GetComponentInChildren<Rigidbody2D>();
+        scoreKeeper = GetComponentInChildren<ScoreKeeper>();
+        if (scoreKeeper == null)
+        {
+            scoreKeeper = gameObject.AddComponent<ScoreKeeper>();
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         bool stabilize = true;
-        if (Input.GetButton("Horizontal"))
+        if (playerHasControl && Input.GetButton("Horizontal"))
         {
             float torque = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * torqueForce;
             rb.AddTorque(torque, ForceMode2D.Force);
             stabilize = false;
         }
-        if (Input.GetButton("Vertical"))
+        if (playerHasControl && Input.GetButton("Vertical"))
         {
             rb.AddForce(transform.up * liftForce * Time.deltaTime, ForceMode2D.Force);
             stabilize = false;
@@ -114,16 +115,30 @@ public class VesselController : MonoBehaviour
         rb.velocity = vel;
     }
 
-    private float lastGroundCollision = 0f;
-    [SerializeField, Range(0, 1)] float groundCollisionGracePeriod = 0.25f;
-    
+    [SerializeField] float maxLandingSpeed = 1f;
+    [SerializeField] float maxLandingTorque = 5f;
 
+    bool landingVelocity
+    {
+        get
+        {
+            return rb.velocity.magnitude < maxLandingSpeed && Mathf.Abs(rb.angularVelocity) < maxLandingTorque;
+        }
+    }
+
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" && Time.timeSinceLevelLoad - lastGroundCollision > groundCollisionGracePeriod)
+        if (collision.gameObject.tag == "Ground")
         {
-            scoreCollisions += 1;
-            lastGroundCollision = Time.timeSinceLevelLoad;
+            scoreKeeper.GroundCollision();
+        } else if (collision.gameObject.tag == "Bottom" && landingVelocity)
+        {
+            scoreKeeper.EndDescent();
+            playerHasControl = false;
+            var score = scoreKeeper.Summarize();
+            Debug.Log(score.ToString());
+            //TODO: Present score
         }
     }
 }
