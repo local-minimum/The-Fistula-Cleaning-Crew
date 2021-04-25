@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] float surfaceMinY = 0;
     [SerializeField] float viewDistance = -10f;
-
+    [SerializeField] float maxXDeviation = 4f;
     VesselController vessel;
     Camera cam;
     
@@ -28,9 +28,9 @@ public class CameraController : MonoBehaviour
         var targetOffset = vesselVerticalTarget.Evaluate(vessel.fallVelocity);
 
         var targetY = vessel.transform.position.y + targetOffset * offsetAmplitude;
-
+        var targetX = vessel.InFistula ? Mathf.Clamp(vessel.transform.position.x, -maxXDeviation, maxXDeviation) : 0f;
         var pos = new Vector3(
-            0,
+            targetX,
             vessel.InFistula ? targetY : Mathf.Max(targetY, surfaceMinY),
             viewDistance
         );

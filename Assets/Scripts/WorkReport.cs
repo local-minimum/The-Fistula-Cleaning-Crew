@@ -126,7 +126,7 @@ public class WorkReport : MonoBehaviour
             landingScoreText.text = standing.ToString();
         }
         totals.Add(standing);
-        yield return new WaitForSeconds(betweenCountingDelay);
+        yield return new WaitForSeconds(countingDelay);
         int total = 0;
 
         for (int i=0; i<totals.Count; i++)
