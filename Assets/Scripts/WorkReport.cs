@@ -113,7 +113,7 @@ public class WorkReport : MonoBehaviour
         for (float i=maxFlight; i>summary.flightTime; i--)
         {
             flightTime += flightScore;
-            flightScoreText.text = flightScore.ToString();
+            flightScoreText.text = flightTime.ToString();
             yield return new WaitForSeconds(countingDelay);
         }
         totals.Add(flightTime);
@@ -126,7 +126,7 @@ public class WorkReport : MonoBehaviour
             landingScoreText.text = standing.ToString();
         }
         totals.Add(standing);
-        yield return new WaitForSeconds(countingDelay);
+        yield return new WaitForSeconds(betweenCountingDelay);
         int total = 0;
 
         for (int i=0; i<totals.Count; i++)
@@ -150,7 +150,7 @@ public class WorkReport : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             PlayerPrefs.DeleteKey(scoreKey);
         }

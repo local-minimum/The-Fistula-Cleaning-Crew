@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCollisionsPerSegment: 5
-  maxFlightPerSegment: 12
+  maxFlightPerSegment: 8
   collisionsHeader: {fileID: 938229881}
   flightHeader: {fileID: 304148984}
   landingHeader: {fileID: 2066645239}

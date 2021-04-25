@@ -19,6 +19,7 @@ public class VesselController : MonoBehaviour
     [SerializeField] ParticleSystem mainRocket;
     [SerializeField] ParticleSystem leftRocket;
     [SerializeField] ParticleSystem rightRocket;
+    [SerializeField] bool enableStabilize = false;
 
     CameraController cam;
 
@@ -136,6 +137,7 @@ public class VesselController : MonoBehaviour
 
     void StabilizeVessel()
     {
+        if (!enableStabilize) return;
         float velocity = rb.angularVelocity;
         float targetVelocity = stabilizingSpeedModulation.Evaluate(Mathf.Abs(rotation)) * Mathf.Sign(rotation) * stabilizingSpeedScale;
         if ((targetVelocity < 0 && velocity > targetVelocity) || (targetVelocity > 0 && velocity < targetVelocity))

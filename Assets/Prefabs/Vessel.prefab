@@ -257,7 +257,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.06
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -310,7 +310,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 17
+      scalar: 12
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -426,7 +426,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5122,7 +5122,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 14
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5238,7 +5238,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5819,7 +5819,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 900
+      scalar: 950
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9881,7 +9881,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.06
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9934,7 +9934,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 17
+      scalar: 12
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10050,7 +10050,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14607,7 +14607,7 @@ Transform:
   m_GameObject: {fileID: 655084030808900454}
   m_LocalRotation: {x: 0, y: 0, z: -0.19335262, w: 0.98112935}
   m_LocalPosition: {x: -2.27, y: 3.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1053255215850551975}
   - {fileID: 245114384}

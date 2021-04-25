@@ -15,6 +15,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] float viewDistance = -10f;
     [SerializeField] float maxXDeviation = 4f;
     [SerializeField] float maxY = 2f;
+    [SerializeField] float fallVelocityEasing = 0.5f;
+    [SerializeField] AudioSource musicSpeaker;
+    float fallVelocity = 0f;
+
     VesselController vessel;
     Camera cam;
     public CameraShaker shaker { get; private set; }
@@ -27,8 +31,9 @@ public class CameraController : MonoBehaviour
     }
 
     private void LateUpdate()
-    {        
-        var targetOffset = vesselVerticalTarget.Evaluate(vessel.fallVelocity);
+    {
+        fallVelocity = Mathf.Lerp(fallVelocity, vessel.fallVelocity, fallVelocityEasing);
+        var targetOffset = vesselVerticalTarget.Evaluate(fallVelocity);
 
         var targetY = Mathf.Min(vessel.transform.position.y + targetOffset * offsetAmplitude, maxY);
         var targetX = vessel.InFistula ? Mathf.Clamp(vessel.transform.position.x, -maxXDeviation, maxXDeviation) : 0f;
@@ -39,5 +44,13 @@ public class CameraController : MonoBehaviour
         );
 
         transform.position = Vector3.Lerp(transform.position, pos, targetEasing * Time.deltaTime);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            musicSpeaker.mute = !musicSpeaker.mute;
+        }
     }
 }

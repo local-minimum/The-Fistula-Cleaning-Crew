@@ -552,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4}
-  m_SizeDelta: {x: 16, y: 2}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 14, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &122599972
 Canvas:
@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You go deep, you go fast and you clean hard!
+  m_text: 'You go deep. You go fast. You clean hard!
 
 
     The successor to Local
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.15
+  m_fontSize: 1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2553,7 +2553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Time starts when you enter the fistula
+  m_text: Time starts when you enter the fistula.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4230,10 +4230,10 @@ RectTransform:
   m_Father: {fileID: 529696001}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: -0.1}
-  m_AnchorMax: {x: 0.4, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.15, y: -0.1}
+  m_AnchorMax: {x: 0.3, y: 0.3}
+  m_AnchoredPosition: {x: -0.00000047683716, y: 0}
+  m_SizeDelta: {x: 0.00000023841858, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1054241159
 CanvasRenderer:
@@ -7583,8 +7583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3, y: 0}
-  m_SizeDelta: {x: 10, y: 6}
+  m_AnchoredPosition: {x: 3, y: -0.58}
+  m_SizeDelta: {x: 8, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2026432092
 Canvas:
@@ -8034,7 +8034,10 @@ MonoBehaviour:
 
 
     This
-    one counts! All gunk should be removed!'
+    one counts!
+
+
+    All gunk should be removed!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8381,10 +8384,10 @@ RectTransform:
   m_Father: {fileID: 106968280}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05, y: -0.1}
-  m_AnchorMax: {x: 0.25, y: 0.6}
+  m_AnchorMin: {x: -0.15, y: -0.1}
+  m_AnchorMax: {x: 0.25, y: 0.4}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.00000023841858, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2138489447
 CanvasRenderer:
@@ -9162,7 +9165,7 @@ MonoBehaviour:
   - {fileID: 5107260259910734670, guid: 87a0c32df2ccdcb48b717b0d47676e38, type: 3}
   - {fileID: 6242640437952878279, guid: 66a5c74a9dbfe6b4fba212b9e8bd39b8, type: 3}
   - {fileID: 3619516444126577025, guid: 568be9915babb13408e8e9de5271ccb5, type: 3}
-  segmentsDeep: 3
+  segmentsDeep: 25
   bottom: {fileID: 4430700052468042717}
 --- !u!1 &2254191538804639833
 GameObject:
