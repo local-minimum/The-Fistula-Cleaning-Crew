@@ -6,6 +6,7 @@ using System.Linq;
 public class FistulaBuilder : MonoBehaviour
 {
     [SerializeField] FistulaSegment firstSegment;
+    [SerializeField] bool firstSegmentFlipped;
     [SerializeField] List<FistulaSegment> segments;
     [SerializeField] int segmentsDeep = 20;
     [SerializeField] Transform bottom;
@@ -80,7 +81,7 @@ public class FistulaBuilder : MonoBehaviour
     }
 
     void BuildFistula() {
-        var seg = SpawnSegment(firstSegment, transform.position, false);
+        var seg = SpawnSegment(firstSegment, transform.position, firstSegmentFlipped);
         var instruction = new BuilderInstruction(seg);
         for (int i=1;i<segmentsDeep;i++)
         {
