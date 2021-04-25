@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: segments.Array.data[14]
       value: 
       objectReference: {fileID: 3619516444126577025, guid: 568be9915babb13408e8e9de5271ccb5, type: 3}
+    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
+      propertyPath: segmentsDeep
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2026432092, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_Camera
       value: 
