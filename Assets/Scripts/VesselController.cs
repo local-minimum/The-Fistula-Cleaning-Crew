@@ -16,7 +16,20 @@ public class VesselController : MonoBehaviour
     [SerializeField] float maxTroque = 40f;
     [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
 
+    [SerializeField] ParticleSystem mainRocket;
+    [SerializeField] ParticleSystem leftRocket;
+    [SerializeField] ParticleSystem rightRocket;
+
+    CameraController cam;
+
     bool playerHasControl = true;
+    public bool PlayerPlaying
+    {
+        get
+        {
+            return playerHasControl;
+        }
+    }
 
     public ScoreKeeper scoreKeeper {
         private set;
@@ -31,12 +44,16 @@ public class VesselController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = FindObjectOfType<CameraController>();
         rb = GetComponentInChildren<Rigidbody2D>();
         scoreKeeper = GetComponentInChildren<ScoreKeeper>();
         if (scoreKeeper == null)
         {
             scoreKeeper = gameObject.AddComponent<ScoreKeeper>();
         }
+        mainRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        leftRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+        rightRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
     }
 
     // Update is called once per frame
@@ -49,18 +66,38 @@ public class VesselController : MonoBehaviour
         bool stabilize = true;
         if (playerHasControl && Input.GetButton("Horizontal"))
         {
-            float torque = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * torqueForce;
-            float lateralForce = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * this.lateralForce;
+            float direction = Mathf.Sign(Input.GetAxis("Horizontal"));
+            float torque = direction * Time.deltaTime * torqueForce;
+            float lateralForce = direction * Time.deltaTime * this.lateralForce;
             rb.AddTorque(torque, ForceMode2D.Force);
             rb.AddForce(Vector2.right * lateralForce);
+            if (direction > 0f)
+            {
+                if (leftRocket.isStopped) leftRocket.Play();
+                if (rightRocket.isPlaying) rightRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+
+            } else
+            {
+                if (leftRocket.isPlaying) leftRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+                if (rightRocket.isStopped) rightRocket.Play();
+            }
             stabilize = false;
+        } else
+        {
+            leftRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+            rightRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         }
+
         if (playerHasControl && Input.GetButton("Vertical"))
         {
             rb.AddForce(transform.up * liftForce * Time.deltaTime, ForceMode2D.Force);
             stabilize = false;
+            mainRocket.Play();
+        } else
+        {
+            mainRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         }
-        
+
         if (stabilize) {
             StabilizeVessel();
         }
@@ -141,6 +178,11 @@ public class VesselController : MonoBehaviour
         {
             SoundBoard.Play(SoundType.BouncingGround);
             scoreKeeper.GroundCollision();
+            cam.shaker.Shake();
+        } else if (collision.gameObject.tag == "Bottom" || collision.gameObject.tag == "Surface")
+        {
+            SoundBoard.Play(SoundType.BouncingGround);
+            cam.shaker.Shake();
         }
     }
 

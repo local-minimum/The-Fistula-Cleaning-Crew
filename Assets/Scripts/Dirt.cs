@@ -12,7 +12,7 @@ public class Dirt : MonoBehaviour
 
     float cleanness = 0f;    
     bool cleaned = false;
-
+    VesselController vessel;
 
     public bool Mobile {
         get { return mobile; }
@@ -26,8 +26,16 @@ public class Dirt : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        vessel = FindObjectOfType<VesselController>();
+    }
+
+    [SerializeField] float noCleanStartDuration = 0.5f;
+
     private void OnMouseEnter()
     {
+        if (Time.timeSinceLevelLoad < noCleanStartDuration) return;
         if (!cleaning)
         {
             SoundBoard.Play(SoundType.TargetGunk);
@@ -50,6 +58,11 @@ public class Dirt : MonoBehaviour
         if (cleaned) return;
         if (cleaning)
         {
+            if (!vessel.PlayerPlaying)
+            {
+                Laser.ClearTarget();
+                return;
+            }
             cleanness += Time.deltaTime;
             if (cleanness > cleaningDuration)
             {
@@ -74,8 +87,7 @@ public class Dirt : MonoBehaviour
 
     private void Cleaned()
     {
-        Laser.ClearTarget();
-        var vessel = FindObjectOfType<VesselController>();
+        Laser.ClearTarget();        
         vessel.scoreKeeper.AddCleaning();        
         Destroy(gameObject);
     }

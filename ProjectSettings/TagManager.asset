@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bottom
   - Ground
+  - Surface
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Particles
   - 
   - 
   - 

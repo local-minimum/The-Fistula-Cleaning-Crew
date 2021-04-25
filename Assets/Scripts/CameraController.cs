@@ -17,11 +17,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] float maxY = 2f;
     VesselController vessel;
     Camera cam;
+    public CameraShaker shaker { get; private set; }
     
     void Start()
     {
         vessel = FindObjectOfType<VesselController>();
         cam = GetComponentInChildren<Camera>();
+        shaker = GetComponentInChildren<CameraShaker>();
     }
 
     private void LateUpdate()
