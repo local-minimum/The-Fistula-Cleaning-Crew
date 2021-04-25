@@ -41,7 +41,11 @@ public class VesselController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        }
         bool stabilize = true;
         if (playerHasControl && Input.GetButton("Horizontal"))
         {
