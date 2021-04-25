@@ -196,102 +196,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1282900825}
-    - target: {fileID: 712102830, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: m_text
-      value: Hover gunk with your mouse for the laser to start blasting it away.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326535278, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: firstSegment
-      value: 
-      objectReference: {fileID: 3764981021736391796, guid: cbb02df9926987d44931b434ad3d4eb5, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: firstSegmentFlipped
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[0]
-      value: 
-      objectReference: {fileID: 7740754667649801645, guid: a7f50ed14fd40c043887a2c9e90988c4, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[1]
-      value: 
-      objectReference: {fileID: 6481763416913305546, guid: 6750471a000a9db4cb93f8aacdb5cbdf, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[2]
-      value: 
-      objectReference: {fileID: 1322007543511736018, guid: d599852f351893749a3bc7ea7dd9b5ad, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[3]
-      value: 
-      objectReference: {fileID: 9190902496271124567, guid: 03173f2b1a3d58247aeb5aaae908aa82, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[4]
-      value: 
-      objectReference: {fileID: 4987024018304421113, guid: b61adb40961d2f2458fb1ee668e799c0, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[5]
-      value: 
-      objectReference: {fileID: 938087163116174307, guid: f5b380f437e29c646a981e04b7f108fe, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[6]
-      value: 
-      objectReference: {fileID: 3674187140114239304, guid: 8e30899377aeeaa40b049ae16920e9c2, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[7]
-      value: 
-      objectReference: {fileID: 9101874288911708651, guid: 3d850053e012fa040a6dd6cb184f19ba, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[8]
-      value: 
-      objectReference: {fileID: 3764981021736391796, guid: cbb02df9926987d44931b434ad3d4eb5, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[9]
-      value: 
-      objectReference: {fileID: 6530307905379222434, guid: 2a35db5dc7e1d1140965e14f6182b69d, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[10]
-      value: 
-      objectReference: {fileID: 3544218898132930165, guid: 1565038b740514c43b1cb4cc4221c9be, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[11]
-      value: 
-      objectReference: {fileID: 6962455749501861001, guid: e5901b13ee1a09b439d63df52858b2b9, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[12]
-      value: 
-      objectReference: {fileID: 5107260259910734670, guid: 87a0c32df2ccdcb48b717b0d47676e38, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[13]
-      value: 
-      objectReference: {fileID: 6242640437952878279, guid: 66a5c74a9dbfe6b4fba212b9e8bd39b8, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segments.Array.data[14]
-      value: 
-      objectReference: {fileID: 3619516444126577025, guid: 568be9915babb13408e8e9de5271ccb5, type: 3}
-    - target: {fileID: 1391114305, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: segmentsDeep
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 2026432092, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1282900825}
-    - target: {fileID: 2084895869, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: m_text
-      value: 'This takes a little while during which the vessel must remain in the
-        vicinity.
-
-
-        This one counts! All gunk should be removed!'
-      objectReference: {fileID: 0}
     - target: {fileID: 2185290497774199752, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -406,6 +314,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8090118272994393853, guid: 0db823bab99b5c64c996bc4e0e9bee64, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.122641504
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090118272994393853, guid: 0db823bab99b5c64c996bc4e0e9bee64, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.029326892
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090118272994393853, guid: 0db823bab99b5c64c996bc4e0e9bee64, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.007520473
+      objectReference: {fileID: 0}
     - target: {fileID: 8090118273718366220, guid: 0db823bab99b5c64c996bc4e0e9bee64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
