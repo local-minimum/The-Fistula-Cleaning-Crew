@@ -372,8 +372,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  torqueForce: -50
-  liftForce: 700
+  torqueForce: -120
+  liftForce: 950
+  lateralForce: 200
   maxTroque: 40
   maxVelocity: {x: 10, y: 20}
   maxLandingSpeed: 1

@@ -11,6 +11,7 @@ public class VesselController : MonoBehaviour
 
     [SerializeField] float torqueForce = 1f;
     [SerializeField] float liftForce = 1f;
+    [SerializeField] float lateralForce = 0f;
 
     [SerializeField] float maxTroque = 40f;
     [SerializeField] Vector2 maxVelocity = new Vector2(10, 20);
@@ -45,7 +46,9 @@ public class VesselController : MonoBehaviour
         if (playerHasControl && Input.GetButton("Horizontal"))
         {
             float torque = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * torqueForce;
+            float lateralForce = Mathf.Sign(Input.GetAxis("Horizontal")) * Time.deltaTime * this.lateralForce;
             rb.AddTorque(torque, ForceMode2D.Force);
+            rb.AddForce(Vector2.right * lateralForce);
             stabilize = false;
         }
         if (playerHasControl && Input.GetButton("Vertical"))
