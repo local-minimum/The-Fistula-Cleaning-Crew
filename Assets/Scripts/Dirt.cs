@@ -13,6 +13,7 @@ public class Dirt : MonoBehaviour
     float cleanness = 0f;    
     bool cleaned = false;
     VesselController vessel;
+    ParticleSystem ps;
 
     public bool Mobile {
         get { return mobile; }
@@ -29,6 +30,7 @@ public class Dirt : MonoBehaviour
     private void Start()
     {
         vessel = FindObjectOfType<VesselController>();
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     [SerializeField] float noCleanStartDuration = 0.5f;
@@ -112,8 +114,11 @@ public class Dirt : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         Laser.ClearTarget();        
-        vessel.scoreKeeper.AddCleaning();        
-        Destroy(gameObject);
+        vessel.scoreKeeper.AddCleaning();
+        ps.Play();
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(gameObject, 2f);
     }
 
     private void OnDestroy()

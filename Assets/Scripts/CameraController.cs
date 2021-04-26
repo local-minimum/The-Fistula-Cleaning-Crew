@@ -22,12 +22,14 @@ public class CameraController : MonoBehaviour
     VesselController vessel;
     Camera cam;
     public CameraShaker shaker { get; private set; }
-    
+    string musicSetting = "musicOn";
+
     void Start()
     {
         vessel = FindObjectOfType<VesselController>();
         cam = GetComponentInChildren<Camera>();
         shaker = GetComponentInChildren<CameraShaker>();
+        musicSpeaker.mute = PlayerPrefs.GetInt(musicSetting, 1) == 0;
     }
 
     private void LateUpdate()
@@ -50,7 +52,8 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            musicSpeaker.mute = !musicSpeaker.mute;
+            PlayerPrefs.SetInt(musicSetting, musicSpeaker.mute ? 1 : 0);
+            musicSpeaker.mute = PlayerPrefs.GetInt(musicSetting, 1) == 0;
         }
     }
 }
