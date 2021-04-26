@@ -192,18 +192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 81274876, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
-      propertyPath: m_text
-      value: '''R'' Restarts, no questions asked.
-
-
-        ''C'' Clears highscore
-        during the Work Report. Why would you do that?
-
-
-        ''M'' Toggles mute
-        music.'
-      objectReference: {fileID: 0}
     - target: {fileID: 122599972, guid: 70703877ea15a8345a606e04f59db3f6, type: 3}
       propertyPath: m_Camera
       value: 

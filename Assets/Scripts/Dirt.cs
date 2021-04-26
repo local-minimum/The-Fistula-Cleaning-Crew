@@ -38,6 +38,7 @@ public class Dirt : MonoBehaviour
         if (Time.timeSinceLevelLoad < noCleanStartDuration) return;
         if (!cleaning)
         {
+            isLasered = false;
             SoundBoard.Play(SoundType.TargetGunk);
             StartCoroutine(PlayCleaning());
         }
@@ -48,10 +49,13 @@ public class Dirt : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         Laser.Target(transform);
+        isLasered = true;
         yield return new WaitForSeconds(0.1f);
         SoundBoard.Play(SoundType.CleaningGunk);
         
     }
+
+    bool isLasered = false;
 
     private void Update()
     {
@@ -67,8 +71,10 @@ public class Dirt : MonoBehaviour
             if (cleanness > cleaningDuration)
             {
                 cleaned = true;
-                Cleaned();
-                SoundBoard.Play(SoundType.ExplodingGunk);
+                StartCoroutine(Cleaned());
+            } else if (isLasered)
+            {
+                Vibrate();
             }
         } else
         {
@@ -76,17 +82,29 @@ public class Dirt : MonoBehaviour
         }
     }
 
+    float vibrationMagnitude = 0.2f;
+    void Vibrate()
+    {
+        transform.localScale = new Vector3(Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), 1f);
+    }
+
     private void OnBecameInvisible()
     {
         if (cleaning)
         {
             cleaningTarget = null;
-            Laser.ClearTarget();
         }
     }
 
-    private void Cleaned()
+    private IEnumerator<WaitForSeconds> Cleaned()
     {
+        SoundBoard.Play(SoundType.ExplodingGunk);
+        float start = Time.timeSinceLevelLoad;
+        while (Time.timeSinceLevelLoad - start < 0.5f)
+        {
+            Vibrate();
+            yield return new WaitForSeconds(0.02f);
+        }
         Laser.ClearTarget();        
         vessel.scoreKeeper.AddCleaning();        
         Destroy(gameObject);

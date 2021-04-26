@@ -226,7 +226,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3190e3c94452f9a4fb58d20a1b5c4468, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -558,5 +558,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetingGunk: {fileID: 8300000, guid: b9d48363e240716468513e2212f590b9, type: 3}
   cleaningGunk: {fileID: 8300000, guid: 62759dea006f9444e8159aba53d1e2cd, type: 3}
-  explodingGunk: {fileID: 8300000, guid: cb098ff97ccd2bc4a975da0db6780abd, type: 3}
-  bouncingGround: {fileID: 8300000, guid: 608bba20695cbf44889270f0e051ef5c, type: 3}
+  explodingGunk: {fileID: 8300000, guid: 744c21ab6c050794681b72c9c35c98ac, type: 3}
+  bouncingGround: {fileID: 8300000, guid: d2eca88423392a046b4ff96fc0a71f2b, type: 3}
