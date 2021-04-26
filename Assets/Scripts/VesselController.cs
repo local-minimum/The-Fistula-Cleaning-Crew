@@ -20,8 +20,10 @@ public class VesselController : MonoBehaviour
     [SerializeField] ParticleSystem leftRocket;
     [SerializeField] ParticleSystem rightRocket;
     [SerializeField] bool enableStabilize = false;
+    [SerializeField] float rbPivot = 1f;
 
     CameraController cam;
+    EngineSounder engineSounder;
 
     bool playerHasControl = true;
     public bool PlayerPlaying
@@ -47,11 +49,13 @@ public class VesselController : MonoBehaviour
     {
         cam = FindObjectOfType<CameraController>();
         rb = GetComponentInChildren<Rigidbody2D>();
+        rb.centerOfMass = Vector2.up * rbPivot;
         scoreKeeper = GetComponentInChildren<ScoreKeeper>();
         if (scoreKeeper == null)
         {
             scoreKeeper = gameObject.AddComponent<ScoreKeeper>();
         }
+        engineSounder = GetComponentInChildren<EngineSounder>();
         mainRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         leftRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         rightRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
@@ -74,13 +78,21 @@ public class VesselController : MonoBehaviour
             rb.AddForce(Vector2.right * lateralForce);
             if (direction > 0f)
             {
-                if (leftRocket.isStopped) leftRocket.Play();
+                if (leftRocket.isStopped)
+                {
+                    leftRocket.Play();
+                    engineSounder.EngineOn();
+                }
                 if (rightRocket.isPlaying) rightRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 
             } else
             {
                 if (leftRocket.isPlaying) leftRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-                if (rightRocket.isStopped) rightRocket.Play();
+                if (rightRocket.isStopped)
+                {
+                    rightRocket.Play();
+                    engineSounder.EngineOn();
+                }
             }
             stabilize = false;
         } else
@@ -94,11 +106,15 @@ public class VesselController : MonoBehaviour
             rb.AddForce(transform.up * liftForce * Time.deltaTime, ForceMode2D.Force);
             stabilize = false;
             mainRocket.Play();
+            engineSounder.EngineOn();
         } else
         {
             mainRocket.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         }
-
+        if (!mainRocket.isPlaying && !leftRocket.isPlaying && !rightRocket.isPlaying)
+        {
+            engineSounder.EngineOff();
+        }
         if (stabilize) {
             StabilizeVessel();
         }
@@ -192,6 +208,7 @@ public class VesselController : MonoBehaviour
     {
         if (playerHasControl && collision.gameObject.tag == "Bottom" && landingVelocity)
         {
+            engineSounder.EngineOff();
             scoreKeeper.EndDescent();
             scoreKeeper.LandingVector(transform.up);
             playerHasControl = false;
