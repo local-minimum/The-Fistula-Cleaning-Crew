@@ -36,7 +36,7 @@ public class Dirt : MonoBehaviour
     private void OnMouseEnter()
     {
         if (Time.timeSinceLevelLoad < noCleanStartDuration) return;
-        if (!cleaning)
+        if (!cleaning && vessel.PlayerPlaying)
         {
             isLasered = false;
             SoundBoard.Play(SoundType.TargetGunk);
@@ -59,6 +59,12 @@ public class Dirt : MonoBehaviour
 
     private void Update()
     {
+        if (!vessel.PlayerPlaying)
+        {
+            Laser.ClearTarget();
+            return;
+        }
+
         if (cleaned) return;
         if (cleaning)
         {
