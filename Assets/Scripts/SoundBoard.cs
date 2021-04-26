@@ -13,6 +13,8 @@ public class SoundBoard : MonoBehaviour
     [SerializeField] AudioClip cleaningGunk;
     [SerializeField] AudioClip explodingGunk;
     [SerializeField] AudioClip bouncingGround;
+    [SerializeField, Range(0, 1)] float targetingVolume = 1f;
+
     public static void Play(SoundType sound)
     {
         var speakers = instance.speakers;
@@ -28,7 +30,7 @@ public class SoundBoard : MonoBehaviour
                 speakers.PlayOneShot(instance.cleaningGunk);
                 break;
             case SoundType.TargetGunk:
-                speakers.PlayOneShot(instance.targetingGunk);
+                speakers.PlayOneShot(instance.targetingGunk, instance.targetingVolume);
                 break;
         }
     }    

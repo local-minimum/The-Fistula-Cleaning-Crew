@@ -560,3 +560,4 @@ MonoBehaviour:
   cleaningGunk: {fileID: 8300000, guid: 62759dea006f9444e8159aba53d1e2cd, type: 3}
   explodingGunk: {fileID: 8300000, guid: 744c21ab6c050794681b72c9c35c98ac, type: 3}
   bouncingGround: {fileID: 8300000, guid: d2eca88423392a046b4ff96fc0a71f2b, type: 3}
+  targetingVolume: 0.5
