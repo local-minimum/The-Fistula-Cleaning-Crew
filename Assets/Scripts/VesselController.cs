@@ -39,16 +39,12 @@ public class VesselController : MonoBehaviour
         get;
     }
  
-
-    //TODO: Add easing to clamps
-    //[SerializeField, Range(0, 1)] float clampEasing = 0.3f;
-
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         cam = FindObjectOfType<CameraController>();
-        rb = GetComponentInChildren<Rigidbody2D>();
+        rb = GetComponentInChildren<Rigidbody2D>();       
         rb.centerOfMass = Vector2.up * rbPivot;
         scoreKeeper = GetComponentInChildren<ScoreKeeper>();
         if (scoreKeeper == null)
@@ -120,6 +116,19 @@ public class VesselController : MonoBehaviour
         }
 
         ClampVelocities();
+        ClampRotaion();    
+    }
+
+    void ClampRotaion()
+    {
+        if (rb.rotation > 90f && rb.rotation <= 180f || rb.rotation < -180f)
+        {
+            rb.rotation = 90f;
+        } else if (rb.rotation < -90f && rb.rotation > -180f || rb.rotation > 180f)
+        {
+            rb.rotation = -90f;
+        }
+
     }
 
     float rotation
