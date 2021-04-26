@@ -14822,7 +14822,7 @@ MonoBehaviour:
   leftRocket: {fileID: 663269587}
   rightRocket: {fileID: 1391874207}
   enableStabilize: 0
-  rbPivot: 0.5
+  rbPivot: 0.3
   maxLandingSpeed: 1
   maxLandingTorque: 5
 --- !u!82 &2007569732

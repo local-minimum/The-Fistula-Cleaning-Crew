@@ -7,7 +7,7 @@ public class Dirt : MonoBehaviour
     [SerializeField] bool mobile;
     [SerializeField] float cleaningDuration = 1f;
     [SerializeField, Range(0, 1)] float decay = 0.2f;
-
+    [SerializeField] Transform dirtSpritTransform;
     static Dirt cleaningTarget;
 
     float cleanness = 0f;    
@@ -23,7 +23,7 @@ public class Dirt : MonoBehaviour
     {
         get
         {
-            return cleaningTarget == this;
+            return cleaningTarget == this && !cleaned;
         }
     }
 
@@ -38,7 +38,7 @@ public class Dirt : MonoBehaviour
     private void OnMouseEnter()
     {
         if (Time.timeSinceLevelLoad < noCleanStartDuration) return;
-        if (!cleaning && vessel.PlayerPlaying)
+        if (!cleaning && vessel.PlayerPlaying && !cleaned)
         {
             isLasered = false;
             SoundBoard.Play(SoundType.TargetGunk);
@@ -93,7 +93,7 @@ public class Dirt : MonoBehaviour
     float vibrationMagnitude = 0.2f;
     void Vibrate()
     {
-        transform.localScale = new Vector3(Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), 1f);
+        dirtSpritTransform.localScale = new Vector3(Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), Random.Range(1 - vibrationMagnitude, 1 + vibrationMagnitude), 1f);
     }
 
     private void OnBecameInvisible()
@@ -101,11 +101,13 @@ public class Dirt : MonoBehaviour
         if (cleaning)
         {
             cleaningTarget = null;
+            Laser.ClearTarget();
         }
     }
 
     private IEnumerator<WaitForSeconds> Cleaned()
     {
+        GetComponent<Collider2D>().enabled = false;
         SoundBoard.Play(SoundType.ExplodingGunk);
         float start = Time.timeSinceLevelLoad;
         while (Time.timeSinceLevelLoad - start < 0.5f)
@@ -117,7 +119,7 @@ public class Dirt : MonoBehaviour
         vessel.scoreKeeper.AddCleaning();
         ps.Play();
         yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         Destroy(gameObject, 2f);
     }
 
