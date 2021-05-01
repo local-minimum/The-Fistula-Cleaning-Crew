@@ -21,6 +21,8 @@ public class VesselController : MonoBehaviour
     [SerializeField] ParticleSystem rightRocket;
     [SerializeField] bool enableStabilize = false;
     [SerializeField] float rbPivot = 1f;
+    [SerializeField] float landingLiftForce = 1f;
+    [SerializeField] float landingLiftForceEasing = 1f;
 
     CameraController cam;
     EngineSounder engineSounder;
@@ -38,11 +40,14 @@ public class VesselController : MonoBehaviour
         private set;
         get;
     }
- 
+
+
+    FistulaBuilder fistulaBuilder;
     Rigidbody2D rb;
-    // Start is called before the first frame update
+
     void Start()
     {
+        fistulaBuilder = FindObjectOfType<FistulaBuilder>();
         cam = FindObjectOfType<CameraController>();
         rb = GetComponentInChildren<Rigidbody2D>();       
         rb.centerOfMass = Vector2.up * rbPivot;
@@ -116,7 +121,12 @@ public class VesselController : MonoBehaviour
         }
 
         ClampVelocities();
-        ClampRotaion();    
+        ClampRotaion();
+        
+        if (InFistula)
+        {
+            HUDTimeAndDepth.Depth = fistulaBuilder.GetDepthProgress(transform);
+        }
     }
 
     void ClampRotaion()
@@ -217,13 +227,33 @@ public class VesselController : MonoBehaviour
     {
         if (playerHasControl && collision.gameObject.tag == "Bottom" && landingVelocity)
         {
+            HUDTimeAndDepth.StopTimer();
             engineSounder.EngineOff();
             scoreKeeper.EndDescent();
             scoreKeeper.LandingVector(transform.up);
             playerHasControl = false;
             var score = scoreKeeper.Summarize();
             Debug.Log(score.ToString());
+            HUDLanding.Hide();
             SceneManager.LoadScene("WorkReport", LoadSceneMode.Additive);
         }
+    }
+
+    public void LandingSequence()
+    {
+        StartCoroutine(LowerEngine());
+    }
+
+    IEnumerator<WaitForSeconds> LowerEngine()
+    {
+        var start = Time.timeSinceLevelLoad;
+        var progress = 0f;
+        while (progress < 0f)
+        {
+            progress = (Time.timeSinceLevelLoad - start) / landingLiftForceEasing;
+            liftForce = Mathf.Lerp(liftForce, landingLiftForce, Mathf.Max(0, 1f - progress));            
+            yield return new WaitForSeconds(0.02f);
+        }
+        liftForce = landingLiftForce;
     }
 }

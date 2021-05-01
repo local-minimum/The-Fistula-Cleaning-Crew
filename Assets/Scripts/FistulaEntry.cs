@@ -10,6 +10,7 @@ public class FistulaEntry : MonoBehaviour
         if (vessel != null)
         {
             vessel.InFistula = true;
+            HUDTimeAndDepth.StartTimer();
         }
     }
 

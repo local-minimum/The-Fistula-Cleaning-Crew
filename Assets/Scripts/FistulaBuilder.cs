@@ -114,4 +114,11 @@ public class FistulaBuilder : MonoBehaviour
         }
         return seg;
     }
+
+    public float GetDepthProgress(Transform vessel)
+    {
+        float depth = transform.position.y - bottom.position.y;
+        float vesselDepth = transform.position.y - vessel.position.y;
+        return vesselDepth / depth;
+    }
 }

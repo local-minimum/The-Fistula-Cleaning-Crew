@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkReport.unity
     guid: 6f9be5a7a51d95640a87d9ae7e5bc558
+  - enabled: 1
+    path: Assets/Scenes/HUD Landing.unity
+    guid: 22152ffa7f20614479cfc5cfe0584c83
+  - enabled: 1
+    path: Assets/Scenes/HUD TimeAndDepth.unity
+    guid: 3bd51987376d6b3419cb12375ae48778
   m_configObjects: {}
